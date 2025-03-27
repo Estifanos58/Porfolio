@@ -97,7 +97,7 @@ export const AboutSection = () => {
 
   const constraintRef = useRef(null);
 
-  return <div className="py-20 lg:py-28">
+  return <div id="about" className="py-20 lg:py-28">
     <div className="container">
     <SectionHeader eyebrow="About Me" title="A Glimpse Into My World" description="Learn more about who I am, what I do,and "/>
     <div className="mt-20 flex flex-col gap-8">
