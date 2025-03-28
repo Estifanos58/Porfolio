@@ -63,9 +63,9 @@ export const HeroSection = () => {
 
       <div>
         <div className='max-w-lg mx-auto'>
-        <h1 className='font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl '>Building Exceptional User Experiences</h1>
+        <h1 className='font-serif text-3xl text-center mt-8 tracking-wide md:text-5xl '>Full Stack Web Developer</h1>
         <p className='mt-4 text-center text-white/60 md:text-lg'>
-          I specialize in transforming designs into functional, high-performing web applications. Let's discuss yur next project.
+          I specialize in transforming designs into functional, high-performing web applications. Let's discuss your next project.
         </p>
         </div>
         <div className='flex flex-col items-center mt-8 gap-4 md:flex-row justify-center z-100 relative'>

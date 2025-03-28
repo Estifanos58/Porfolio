@@ -16,8 +16,7 @@ export const Header = () => {
         <a className='hover:bg-white/10  p-2 rounded-full' href="https://estifkebe08@gmail.com">
          <Image src={email} alt="email" width={20} height={20}/>
         </a>
-        <a className='hover:bg-white/10  p-2 rounded-full' href="https://www.linkedin.com/in/
-estifanos-kebede">
+        <a className='hover:bg-white/10  p-2 rounded-full' href="https://www.linkedin.com/in/estifanos-kebede">
           <Image src={linkedin} alt='LinkedIn' width={20} height={20}/>
         </a>
         <a className='hover:bg-white/10  p-2 rounded-full' href="https://github.com/Estifanos58">
