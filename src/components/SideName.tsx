@@ -2,7 +2,7 @@ import React from 'react'
 
 const SideName = () => {
   return (
-    <div className=" hidden md:flex absolute flex-col gap-10 items-center md:top-[600px] lg:top-[500px] lg:h-[500vh] md:h-[400vh] ">
+    <div className="hidden md:flex absolute flex-col gap-10 items-center md:top-[600px] lg:top-[500px] lg:h-[500vh] md:h-[400vh] ">
         <div className="border-white border-2 h-[400px]" style={{
         writingMode:'vertical-rl'
         }}></div>

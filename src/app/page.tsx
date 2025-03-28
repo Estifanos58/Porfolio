@@ -11,15 +11,17 @@ import {motion} from 'framer-motion'
 export default function Home() {
   return (
     <div className="relative">
-      <SideName/>
-      <Header/>
-      <HeroSection />
-      <ProjectsSection />
-      <TapeSection/>
-      <TestimonialsSection/>
-      <AboutSection />
-      <ContactSection/>
-      <Footer/>
+       <SideName/>
+        <Header/>
+        <HeroSection />
+        <ProjectsSection />
+        <TapeSection/>
+        <TestimonialsSection/>
+        <AboutSection />
+        <ContactSection/>
+        <Footer/>
+
+      
     </div>
   );
 }

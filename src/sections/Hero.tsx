@@ -1,3 +1,4 @@
+
 import memojiImage from '../assets/images/memoji-computer.png';
 import ArrawDown from '../assets/icons/arrow-down.svg'
 import grainImage from '@/assets/images/grain.jpg'
@@ -5,6 +6,7 @@ import StarIcon from '@/assets/icons/star.svg';
 import SparkelIcon from '@/assets/icons/sparkle.svg'
 import Image from 'next/image';
 import HeroOrbit from '@/components/HeroOrbit';
+import Link from 'next/link';
 
 
 export const HeroSection = () => {
@@ -63,11 +65,15 @@ export const HeroSection = () => {
         I specialize in transforming designs into functional, high-performing web applications. Let's discuss yur next project.
       </p>
       </div>
-      <div className='flex flex-col items-center mt-8 gap-4 md:flex-row justify-center'>
-        <button className='inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl'>
-          <span className='font-semibold'>Explore My Work</span>
-          <ArrawDown className='size-4'/>
-        </button>
+      <div className='flex flex-col items-center mt-8 gap-4 md:flex-row justify-center z-100 relative'>
+          <Link href="/Estifanos_Kebede.pdf" download={true}>
+            <button className='inline-flex items-center gap-2 border border-white/15 px-6 h-12 rounded-xl'>
+            <span className='font-semibold'>Download CV</span>
+            <ArrawDown className='size-4'/>
+            </button>
+          </Link>
+        
+        
         <button className='inline-flex items-center gap-2 border-white bg-white text-gray-900 h-12 px-6 rounded-xl'>
           <span>👋</span>
           <span className='font-semibold '>Let's Connect</span>
