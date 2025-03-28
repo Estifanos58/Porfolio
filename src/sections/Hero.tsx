@@ -1,4 +1,3 @@
-
 import memojiImage from '../assets/images/memoji-computer.png';
 import ArrawDown from '../assets/icons/arrow-down.svg'
 import grainImage from '@/assets/images/grain.jpg'
