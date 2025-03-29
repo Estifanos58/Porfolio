@@ -43,20 +43,20 @@ const page = ({params}: {params: {id: string}}) => {
   const project = portfolioProjects.filter((project)=> project.id == id)[0];
   return (
     <>
-    {selectedImage ? 
+    {selectedImage.id ? 
       <div onClick={(e)=>handleClose(e)} className='relative h-[100vh] flex justify-center items-center'>
         <div  className='absolute inset-0 bg-black/50 backdrop-blur-xl z-[-1]'></div>
         <div className='relative z-10 flex justify-center items-center  shadow-lg'>
-          <div>
-            <ChevronLeft onClick={handleLeftClick}/>
+          <div onClick={handleLeftClick} className='h-[300px] flex items-center'>
+            <ChevronLeft  />
           </div>
           <Image
             src={selectedImage.image}
             className='h-[90%] w-[90%] rounded-lg shadow-lg'
             alt={selectedImage.title}
           />
-          <div>
-            <ChevronRight onClick={handleRightClick}/>
+          <div onClick={handleRightClick} className='h-[300px] flex items-center'>
+            <ChevronRight />
           </div>
         </div>
       </div>
