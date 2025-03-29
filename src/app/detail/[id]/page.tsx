@@ -6,6 +6,7 @@ import Image from 'next/image';
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import CardHeader from '@/components/CardHeader';
 import Card from '@/components/Card';
+import { ChevronRight, ChevronLeft } from "lucide-react"
 
 const page = ({params}: {params: {id: string}}) => {
   const [selectedImage, setSelectedImage] = useState({})
@@ -18,18 +19,45 @@ const page = ({params}: {params: {id: string}}) => {
     }
   };
 
+  const handleLeftClick = () => {
+    let currentIndex = project.otherImage.findIndex(img => img.id === selectedImage.id);
+    if (currentIndex > 0) {
+      setSelectedImage(project.otherImage[currentIndex - 1]); // Go to the previous image
+    } else {
+      setSelectedImage(project.otherImage[project.otherImage.length - 1]); // Wrap around to the last image
+    }
+  };
+  
+
+  const handleRightClick = () => {
+    let currentIndex = project.otherImage.findIndex(img => img.id === selectedImage.id);
+    if (currentIndex < project.otherImage.length - 1) {
+      setSelectedImage(project.otherImage[currentIndex + 1]); // Go to the next image
+    } else {
+      setSelectedImage(project.otherImage[0]); // Wrap around to the first image
+    }
+  };
+  
+
+
   const project = portfolioProjects.filter((project)=> project.id == id)[0];
   return (
     <>
-    {selectedImage.id ? 
-      <div className='relative h-[100vh] flex justify-center items-center'>
-        <div onClick={(e)=>handleClose(e)} className='absolute inset-0 bg-black/50 backdrop-blur-xl z-[-1]'></div>
-        <div className='relative z-10 ml-20'>
+    {selectedImage ? 
+      <div onClick={(e)=>handleClose(e)} className='relative h-[100vh] flex justify-center items-center'>
+        <div  className='absolute inset-0 bg-black/50 backdrop-blur-xl z-[-1]'></div>
+        <div className='relative z-10 flex justify-center items-center  shadow-lg'>
+          <div>
+            <ChevronLeft onClick={handleLeftClick}/>
+          </div>
           <Image
             src={selectedImage.image}
-            className='h-[80%] w-[80%] rounded-lg shadow-lg'
+            className='h-[90%] w-[90%] rounded-lg shadow-lg'
             alt={selectedImage.title}
           />
+          <div>
+            <ChevronRight onClick={handleRightClick}/>
+          </div>
         </div>
       </div>
      :
