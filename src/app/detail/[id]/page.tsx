@@ -1,36 +1,53 @@
-import React from 'react'
+'use client';
+import React , {useState} from 'react'
 import {portfolioProjects} from '@/app/utils/projects'
 import { Header } from '@/sections/Header';
 import Image from 'next/image';
-import SectionHeader from '@/components/SectionHeader';
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import CardHeader from '@/components/CardHeader';
 import Card from '@/components/Card';
-import { features } from 'process';
-import Toolbox from '@/components/Toolbox';
 
-const page = async ({params}: {params: Promise<{id: string}>}) => {
+const page = ({params}: {params: {id: string}}) => {
+  const [selectedImage, setSelectedImage] = useState({})
 
-  const id = (await params).id;
+  const id = (params).id;
+  const handleClose = (e) => {
+    // Check if the click happened on the backdrop (not inside the image)
+    if (e.currentTarget === e.target) {
+      setSelectedImage({});
+    }
+  };
 
   const project = portfolioProjects.filter((project)=> project.id == id)[0];
   return (
-    <div className=''>
+    <>
+    {selectedImage.id ? 
+      <div className='relative h-[100vh] flex justify-center items-center'>
+        <div onClick={(e)=>handleClose(e)} className='absolute inset-0 bg-black/50 backdrop-blur-xl z-[-1]'></div>
+        <div className='relative z-10 ml-20'>
+          <Image
+            src={selectedImage.image}
+            className='h-[80%] w-[80%] rounded-lg shadow-lg'
+            alt={selectedImage.title}
+          />
+        </div>
+      </div>
+     :
+    <div className='relative'>
+      
       <Header home="../#home" about="../#about" contact="../#contact" project="../#project"/>
-      <div className="bg-gray-900 mt-10 flex flex-col justify-center items-center text-white min-h-screen py-12 px-6 md:px-16">
+      <div className="bg-gray-900 mt-10 flex flex-col lg:justify-center items-center text-white min-h-screen py-12 px-6 md:px-16">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl text-center font-bold">{project.title}</h1>
         <p className="text-gray-400 text-center mt-2">{project.company} • {project.year}</p>
 
         {/* Image Section */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex lg:justify-center">
           <Image
             src={project.image}
             alt={project.title}
-            width={900}
-            height={500}
-            className="rounded-lg shadow-lg border border-gray-700"
+            className="rounded-lg shadow-lg border h-auto w-[400px] md:w-[500px] border-gray-700"
           />
         </div>
 
@@ -55,13 +72,29 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
             </a>
           )}
         </div>
+        <div className='lg:mx-10'>
+          <div className='flex flex-wrap justify-center gap-2 mt-6'>
+          {
+            project?.otherImage && project?.otherImage.map((item, index) => {
+              return <div key={index} onClick={()=>setSelectedImage(item)} className="mt-6 cursor-pointer flex justify-center">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  className="rounded-lg h-[100px] w-[100px] shadow-lg border border-gray-700"
+                />
+              </div>
+            })
+          }
+          </div>
+          
+        </div>
 
         {/* Description */}
-        <p className="mt-6 mx-16 text-gray-300 text-lg ">{project.description}</p>
+        <p className="mt-6 lg:mx-16 text-gray-300 text-lg ">{project.description}</p>
 
         {/* Features & Results */}
          
-        <div className="mt-8 flex justify-center gap-5">
+        <div className="mt-8 flex flex-col items-center lg:justify-center gap-5">
             <Card className="h-auto p-4 col-span-1">
             <CardHeader title="Features" description="Features of the app"/>
               {project.results.map((feature, index) => (
@@ -71,13 +104,13 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
                 </div>
               ))}
             </Card>
-            <Card className="h-auto p-2 col-span-1">
+            <Card className="h-auto w-[400px] p-2 col-span-1">
                 <CardHeader title="Tech Stack Used" description="Explore the technologies and tools I use to creft expectational digital experiences." className=""/>
                 <div className="flex  [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex flex-none py-0.5 gap-6 pr-6">
                 {
                   project?.tech.map((tech,index)=> (
-                    <div key={index} className="inline-flex items-center gap-4 py-2 px-3 outline outlinde-2 outline-white/20 rounded-lg">  
+                    <div key={index} className="inline-flex items-center gap-4 py-2 px-3 outline outlinde-2 outline-white/20 rounded-lg ">  
                       <span className="font-semibold">{tech.title}</span>
                     </div>
                   ))
@@ -86,24 +119,11 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
                 </div>
                 </div>
             </Card>
-            {/* <Card className="h-auto p-4 col-span-1">
-            <CardHeader title="Another Features" description="Another Feature "/>
-              {project?.otherResult.map((feature, index) => (
-                <div key={index} className="text-gray-300 flex gap-2 mx-3 -mt-3 mb-4 font-semibold">
-                  <CheckCircleIcon className="size-5 md:size-6" />
-                  <p>{feature.title}</p>
-                </div>
-              ))}
-            </Card> */}
-     
         </div>
-
-        {/* Additional Features */}
-
-       
+      
 
         {/* Footer CTA */}
-        <div className="mt-10">
+        <div className="mt-10 flex flex-col items-center">
           <p className="text-gray-400">
             Want to learn more about this project or work with me?
           </p>
@@ -116,7 +136,8 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
         </div>
       </div>
     </div>
-    </div>
+    </div>}
+    </>
   )
 }
 

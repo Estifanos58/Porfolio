@@ -1,5 +1,10 @@
 import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
-import kasinaLandingage from '@/assets/images/project/Kasina_home.png'
+import kasinaLandingage from '@/assets/images/project/kasina/Kasina_home.png'
+import kasinaSearch from '@/assets/images/project/Kasina/Searching.png';
+import kasinaChat from '@/assets/images/project/Kasina/chat.png';
+import kasinaLogin from '@/assets/images/project/Kasina/login.png';
+import kasinaParallel from '@/assets/images/project/Kasina/parallelview.png';
+import kasinaProfile from '@/assets/images/project/Kasina/profile_change.png';
 import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
 import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 
@@ -18,6 +23,14 @@ export const portfolioProjects = [
       url_link: "kassina.netlify.app",
       github_link: "hearc",
       image: kasinaLandingage,
+      otherImage: [
+        {id:'1', image : kasinaLogin, title: "Login Page"},
+        {id:'2', image : kasinaSearch, title: "Searching Page"},
+        {id:'3', image : kasinaChat, title: "Chat Page"},
+        {id:'4', image : kasinaParallel, title: "Parallel View"},
+        {id:'5', image : kasinaProfile, title: "Profile Change"},
+        {id:'6', image : kasinaLandingage, title: "Home Page"},
+      ],
       tech: [
         {title: "SpringBoot"},
         {title: "React"},
