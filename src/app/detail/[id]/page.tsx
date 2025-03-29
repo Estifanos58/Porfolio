@@ -64,18 +64,18 @@ const page = ({params}: {params: {id: string}}) => {
     <div className='relative'>
       
       <Header home="../#home" about="../#about" contact="../#contact" project="../#project"/>
-      <div className="bg-gray-900 mt-10 flex flex-col lg:justify-center items-center text-white min-h-screen py-12 px-6 md:px-16">
+      <div className="bg-gray-900 mt-10 flex flex-col lg:justify-center items-center text-white min-h-screen py-12 px-6 ">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl text-center font-bold">{project.title}</h1>
+        <h1 className="text-4xl text-center font-bold font-serif tracking-wider">{project.title}</h1>
         <p className="text-gray-400 text-center mt-2">{project.company} • {project.year}</p>
 
         {/* Image Section */}
-        <div className="mt-6 flex lg:justify-center">
+        <div className="mt-6 flex justify-center">
           <Image
             src={project.image}
             alt={project.title}
-            className="rounded-lg shadow-lg border h-auto w-[400px] md:w-[500px] border-gray-700"
+            className="rounded-lg shadow-lg border h-auto w-[800px] md:w-[900px] border-gray-700"
           />
         </div>
 
@@ -122,8 +122,8 @@ const page = ({params}: {params: {id: string}}) => {
 
         {/* Features & Results */}
          
-        <div className="mt-8 flex flex-col items-center lg:justify-center gap-5">
-            <Card className="h-auto p-4 col-span-1">
+        <div className="mt-8 flex flex-col items-center mx-auto  md:flex-row md:justify-center gap-5">
+            <Card className="h-auto p-4">
             <CardHeader title="Features" description="Features of the app"/>
               {project.results.map((feature, index) => (
                 <div key={index} className="text-gray-300 flex gap-2 mx-3 -mt-3 mb-4 font-semibold">
@@ -132,7 +132,7 @@ const page = ({params}: {params: {id: string}}) => {
                 </div>
               ))}
             </Card>
-            <Card className="h-auto w-[400px] p-2 col-span-1">
+            <Card className="h-auto w-[400px] lg:w-auto p-2 pb-4">
                 <CardHeader title="Tech Stack Used" description="Explore the technologies and tools I use to creft expectational digital experiences." className=""/>
                 <div className="flex  [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex flex-none py-0.5 gap-6 pr-6">
