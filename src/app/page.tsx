@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="relative">
        <SideName/>
-        <Header/>
+        <Header home="#home" about="#about" contact="#contact" project="#project"/>
         <HeroSection />
         <ProjectsSection />
         <TapeSection/>

@@ -16,7 +16,7 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
   const project = portfolioProjects.filter((project)=> project.id == id)[0];
   return (
     <div className=''>
-      <Header/>
+      <Header home="../#home" about="../#about" contact="../#contact" project="../#project"/>
       <div className="bg-gray-900 mt-10 flex flex-col justify-center items-center text-white min-h-screen py-12 px-6 md:px-16">
       {/* Hero Section */}
       <div className="max-w-5xl mx-auto">
@@ -70,7 +70,6 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
                   <p>{feature.title}</p>
                 </div>
               ))}
-              {/* </div>    */}
             </Card>
             <Card className="h-auto p-2 col-span-1">
                 <CardHeader title="Tech Stack Used" description="Explore the technologies and tools I use to creft expectational digital experiences." className=""/>
@@ -87,37 +86,21 @@ const page = async ({params}: {params: Promise<{id: string}>}) => {
                 </div>
                 </div>
             </Card>
+            {/* <Card className="h-auto p-4 col-span-1">
+            <CardHeader title="Another Features" description="Another Feature "/>
+              {project?.otherResult.map((feature, index) => (
+                <div key={index} className="text-gray-300 flex gap-2 mx-3 -mt-3 mb-4 font-semibold">
+                  <CheckCircleIcon className="size-5 md:size-6" />
+                  <p>{feature.title}</p>
+                </div>
+              ))}
+            </Card> */}
      
         </div>
 
-        {/* Tech Stack */}
+        {/* Additional Features */}
 
        
-        {/* <div className="mt-8">
-          <h2 className="text-2xl font-semibold font-serif tracking-wider">Tech Stack</h2>
-          <div className="flex flex-wrap gap-3 mt-3">
-            {project?.tech.map((tech, index) => (
-              <span
-                key={index}
-                className="bg-gray-800 px-4 py-1 rounded-lg text-gray-300"
-              >
-                {tech.title}
-              </span>
-            ))}
-          </div>
-        </div> */}
-
-        {/* Additional Features */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold">Additional Features</h2>
-          <ul className="mt-2 text-gray-400 space-y-1 list-disc pl-5">
-            {project?.otherResult.map((feature, index) => (
-              <li key={index} className="text-gray-300">
-                {feature.title}
-              </li>
-            ))}
-          </ul>
-        </div>
 
         {/* Footer CTA */}
         <div className="mt-10">
