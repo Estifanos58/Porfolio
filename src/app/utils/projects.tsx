@@ -16,8 +16,20 @@ export const portfolioProjects = [
         { title: "Group messaging"}
       ],
       url_link: "kassina.netlify.app",
-      github_link: "",
+      github_link: "hearc",
       image: kasinaLandingage,
+      tech: [
+        {title: "SpringBoot"},
+        {title: "React"},
+        {title: "MongoDB"},
+        {title: "Zustand"},
+        {title: "Tailwind"}
+      ],
+      otherResult: [
+        { title: "JWT Authentication"},
+        { title: "WebSocket For Real time communication"},
+      ],
+      description:"Kasina Chat is a full-featured real-time messaging application built with React, Zustand, and Spring Boot, leveraging WebSockets for instant communication. It supports both individual and group chats, allowing users to create groups, add members, and collaborate effortlessly. With a powerful user search feature, individuals can quickly find and connect with others by name. The app ensures a smooth and interactive experience with a clean, responsive UI, making conversations seamless across devices. Designed for efficiency and scalability, Kasina Chat delivers fast, reliable messaging while maintaining a modern and intuitive user experience."
     },
     {
       id:'234',
