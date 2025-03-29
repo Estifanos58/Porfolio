@@ -10,7 +10,7 @@ import ChromeIcon from '@/assets/icons/chrome.svg';
 import ReactIcon from '@/assets/icons/react.svg';
 import GithubIcon from '@/assets/icons/github.svg';
 import SectionHeader from "@/components/SectionHeader";
-import mapImage from '@/assets/images/map.png'
+import mapImage from '@/assets/images/location.png'
 import smileMemoji from '@/assets/images/memoji-smile.png'
 import CardHeader from "@/components/CardHeader";
 import Toolbox from "@/components/Toolbox";
@@ -57,14 +57,14 @@ const hobbies = [
     top:'5%',
   }, 
   {
-    title:"Photography",
-    emoji:"📸",
+    title:"News",
+    emoji:"📰",
     left:'50%',
     top:'5%',
   },
   {
-    title: "Hiking",
-    emoji:"🧗",
+    title: "Movie",
+    emoji:"🎬",
     left:'35%',
     top:'40%',
   },
@@ -87,8 +87,8 @@ const hobbies = [
     top:'65%',
   },
   {
-    title: "Reading",
-    emoji:"📖",
+    title: "Coding",
+    emoji:"💻",
     left:'45%',
     top:'70%',
   },
@@ -102,13 +102,13 @@ export const AboutSection = () => {
     <SectionHeader eyebrow="About Me" title="A Glimpse Into My World" description="Learn more about who I am, what I do,and "/>
     <div className="mt-20 flex flex-col gap-8">
       <div className="grid grid-col-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
-        <Card className="h-[320px] md:col-span-2 lg:col-span-1">
+        {/* <Card className="h-[320px] md:col-span-2 lg:col-span-1">
           <CardHeader title="My Reads" description="Explore the books shaping my perspectives."/>
             <div className="w-40 mx-auto mt-2 md:mt-0">
               <Image src={bookImage} alt="book cover" />
             </div>   
-        </Card>
-        <Card className="h-[320px] md:col-span-3 lg:col-span-2">
+        </Card> */}
+        <Card className="h-[320px] md:col-span-5 lg:col-span-5">
               <CardHeader title="My Toolbox" description="Explore the technologies and tools I use to creft expectational digital experiences." className=""/>
               <Toolbox toolBoxItems={toolBoxItems} className="" itemWrapperclassName="animate-move-left [animation-duration:20s]"/>
               <Toolbox toolBoxItems={toolBoxItems} className="mt-6" itemWrapperclassName="animate-move-right [animation-duration:15s]"/>

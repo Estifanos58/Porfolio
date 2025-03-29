@@ -1,51 +1,11 @@
-import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
-import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
-import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
 import Image from "next/image";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrawUpRightIcon from "@/assets/icons/arrow-up-right.svg";
-import grainImage from '@/assets/images/grain.jpg'
 import SectionHeader from "@/components/SectionHeader";
 import Card from "@/components/Card";
+import { portfolioProjects } from "@/app/utils/projects";
+import Link from "next/link";
 
-const portfolioProjects = [
-  {
-    company: "Acme Corp",
-    year: "2022",
-    title: "Dark Saas Landing Page",
-    results: [
-      { title: "Enhanced user experience by 40%" },
-      { title: "Improved site speed by 50%" },
-      { title: "Increased mobile traffic by 35%" },
-    ],
-    link: "https://youtu.be/4k7IdSLxh6w",
-    image: darkSaasLandingPage,
-  },
-  {
-    company: "Innovative Co",
-    year: "2021",
-    title: "Light Saas Landing Page",
-    results: [
-      { title: "Boosted sales by 20%" },
-      { title: "Expanded customer reach by 35%" },
-      { title: "Increased brand awareness by 15%" },
-    ],
-    link: "https://youtu.be/7hi5zwO75yc",
-    image: lightSaasLandingPage,
-  },
-  {
-    company: "Quantum Dynamics",
-    year: "2023",
-    title: "AI Startup Landing Page",
-    results: [
-      { title: "Enhanced user experience by 40%" },
-      { title: "Improved site speed by 50%" },
-      { title: "Increased mobile traffic by 35%" },
-    ],
-    link: "https://youtu.be/Z7I5uSRHMHg",
-    image: aiStartupLandingPage,
-  },
-];
 
 export const ProjectsSection = () => {
   return (
@@ -77,18 +37,35 @@ export const ProjectsSection = () => {
                     );
                   })}
                 </ul>
-                <a href={project.link}>
-                  <button className="bg-white text-gray-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-auto px-6">
-                    <span>Visit Live Site</span>
-                    <ArrawUpRightIcon className="size-4" />
-                  </button>
-                </a>
+                <div className="flex gap-2">
+                  {
+                    project?.url_link && <a href={project.url_link}>
+                    <button className="bg-white text-gray-950  h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-auto px-6">
+                      <span>Live</span>
+                      <ArrawUpRightIcon className="size-4" />
+                    </button>
+                  </a>
+                  }
+                  
+                  <a href={project.github_link}>
+                    <button className="bg-white/10 text-white-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-auto px-6">
+                      <span>Github</span>
+                      <ArrawUpRightIcon className="size-4" />
+                    </button>
+                  </a>
+                  <Link href={`/detail/${project.id}`}>
+                    <button className="bg-white/50 text-white-950 h-12 w-full rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 md:w-auto px-6">
+                        <span>Detail</span>
+                      </button>
+                  </Link>
+                </div>
+               
                 </div>
                 <div className="relative">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  className="mt-8 -mb-4 md:-md-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"
+                  className="mt-8 -mb-4 md:-md-0 lg:mt-0 lg:absolute lg:h-[400px] lg:w-[700px] lg:max-w-none"
                 />
                 </div>
               </div>            
