@@ -21,7 +21,8 @@ export const portfolioProjects = [
         { title: "Group messaging"}
       ],
       url_link: "kassina.netlify.app",
-      github_link: "hearc",
+      github_link: "https://github.com/Estifanos58/Kasina-Frontend",
+      backend_link: "https://github.com/Estifanos58/Kasina-Backend-API",
       image: kasinaLandingage,
       otherImage: [
         {id:'1', image : kasinaLogin, title: "Login Page"},

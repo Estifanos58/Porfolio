@@ -45,7 +45,7 @@ const page = ({params}: {params: {id: string}}) => {
     <>
     {selectedImage.id ? 
       <div onClick={(e)=>handleClose(e)} className='relative h-[100vh] flex justify-center items-center'>
-        <div  className='absolute inset-0 bg-black/50 backdrop-blur-xl z-[-1]'></div>
+        <div  className='absolute inset-0 bg-black/50 backdrop-blur-xl blur-2xl z-[-1]'></div>
         <div className='relative z-10 flex justify-center items-center  shadow-lg'>
           <div onClick={handleLeftClick} className='h-[300px] flex items-center'>
             <ChevronLeft  />
@@ -82,7 +82,7 @@ const page = ({params}: {params: {id: string}}) => {
         {/* Links */}
         <div className="mt-4 flex gap-4 justify-center">
           <a
-            href={project.url_link}
+            href={`https://${project.url_link}`}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-500 transition"
@@ -99,6 +99,18 @@ const page = ({params}: {params: {id: string}}) => {
               GitHub Repo 
             </a>
           )}
+          {
+            project.backend_link && (
+              <a
+              href={project.backend_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-600 transition"
+            >
+              Backend Code
+            </a>
+            )
+          }
         </div>
         <div className='lg:mx-10'>
           <div className='flex flex-wrap justify-center gap-2 mt-6'>
