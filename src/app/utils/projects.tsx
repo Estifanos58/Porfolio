@@ -5,8 +5,13 @@ import kasinaChat from '@/assets/images/project/Kasina/chat.png';
 import kasinaLogin from '@/assets/images/project/Kasina/login.png';
 import kasinaParallel from '@/assets/images/project/Kasina/parallelview.png';
 import kasinaProfile from '@/assets/images/project/Kasina/profile_change.png';
-import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
-import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
+import home_tablet from "@/assets/images//project/Abe_garage/Home_tablet.png";
+import admin_laptop from '@/assets/images/project/Abe_garage/Admin_dashboard_laptop.png';
+import create_order from '@/assets/images/project/Abe_garage/Create_order_laptop.png';
+import customer_laptop from '@/assets/images/project/Abe_garage/customer_laptop.png';
+import employee_laptop from '@/assets/images/project/Abe_garage/Employee_laptop.png';
+import order_tablet from '@/assets/images/project/Abe_garage/Order_tablet.png';
+import service_mobile from '@/assets/images/project/Abe_garage/service_mobile.png';
 
 export const portfolioProjects = [
     {
@@ -45,33 +50,50 @@ export const portfolioProjects = [
       ],
       description:"Kasina Chat is a full-featured real-time messaging application built with React, Zustand, and Spring Boot, leveraging WebSockets for instant communication. It supports both individual and group chats, allowing users to create groups, add members, and collaborate effortlessly. With a powerful user search feature, individuals can quickly find and connect with others by name. The app ensures a smooth and interactive experience with a clean, responsive UI, making conversations seamless across devices. Designed for efficiency and scalability, Kasina Chat delivers fast, reliable messaging while maintaining a modern and intuitive user experience."
     },
+
     {
       id:'234',
-      company: "Innovative Co",
-      year: "2021",
-      title: "Light Saas Landing Page",
+      company: "Personal project",
+      year: "2024",
+      title: "Abe Garage",
       results: [
-        { title: "Boosted sales by 20%" },
-        { title: "Expanded customer reach by 35%" },
-        { title: "Increased brand awareness by 15%" },
+        { title: "Role Based Access Control"},
+        { title: "Admin Dashboard" },
+        { title: "Employee Management" },
+        { title: "Customer Management" },
+        { title: "Order Management" },
+        { title: "User Registration"},
+        { title: "Message Sending using Gmail" },
       ],
-      // url_link: "https://youtu.be/4k7IdSLxh6w",
-      github_link: "",
-      image: lightSaasLandingPage,
-    },
-    {
-      id:'432',
-      company: "Quantum Dynamics",
-      year: "2023",
-      title: "AI Startup Landing Page",
-      results: [
-        { title: "Enhanced user experience by 40%" },
-        { title: "Improved site speed by 50%" },
-        { title: "Increased mobile traffic by 35%" },
+      url_link: "https://garage-frontend.onrender.com/",
+      github_link: "https://github.com/Estifanos58/Garage-frontend",
+      backend_link: "https://github.com/Estifanos58/Garage_Project_Backend",
+      image: admin_laptop,
+      otherImage: [
+        {id:'1', image : home_tablet, title: "admin_laptop"},
+        {id:'2', image : create_order, title: "create_order"},
+        {id:'3', image : customer_laptop, title: "customer_laptop"},
+        {id:'4', image : employee_laptop, title: "employee_laptop"},
+        {id:'5', image : order_tablet, title: "order_tablet"},
+        {id:'6', image : service_mobile, title: "service_mobile"},
       ],
-      url_link: "https://youtu.be/4k7IdSLxh6w",
-      github_link: "",
-      image: aiStartupLandingPage,
-    },
+      tech: [
+        {title: "Express"},
+        {title: "React"},
+        {title: "MongoDB"},
+        {title: "Zustand"},
+        {title: "Gmail API"},
+      ],
+      otherResult: [
+        { title: "JWT Authentication"},
+        { title: "Order Assignment"},
+        { title: "Order Tracking"},
+        { title : "Order Complition"},
+        { title: "Order Complition Message Sending"},
+        { title: "Password Recovery"},
+        { title: "Forgot Password Message Sending"},
+      ],
+      description:"Abe Garage is a comprehensive garage management system designed to streamline operations with efficiency and ease. Built with robust role-based access control, it ensures secure and organized management of employees, customers, and orders. Admins can seamlessly add employees, customers, and track orders, while automated notifications enhance communication—sending instant messages when a new employee is added and securely delivering login credentials. The system also includes a password recovery feature for seamless account access. With a user-friendly interface and essential garage functionalities, Abe Garage optimizes workflow, ensuring a smooth and efficient experience for all users."
+    }
   ];
   
