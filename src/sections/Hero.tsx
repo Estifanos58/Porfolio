@@ -75,12 +75,7 @@ export const HeroSection = () => {
               <ArrawDown className='size-4'/>
               </button>
             </Link>
-          
-          
-          {/* <button className='inline-flex items-center gap-2 border-white bg-white text-gray-900 h-12 px-6 rounded-xl'>
-            <span>👋</span>
-            <span className='font-semibold '>Let's Connect</span>
-          </button> */}
+        
         </div>
       </div>
       

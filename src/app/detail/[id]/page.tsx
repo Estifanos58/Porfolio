@@ -1,5 +1,5 @@
 'use client';
-import React , {useState} from 'react'
+import React , {Fragment, useState} from 'react'
 import {portfolioProjects} from '@/app/utils/projects'
 import { Header } from '@/sections/Header';
 import Image from 'next/image';
@@ -135,7 +135,7 @@ const page = ({params}: {params: {id: string}}) => {
         {/* Features & Results */}
          
         <div className="mt-8 flex flex-col items-center mx-auto  md:flex-row md:justify-center gap-5">
-            <Card className="h-auto p-4">
+            <Card className="h-auto p-4 md:p-6 md:w-[600px]">
             <CardHeader title="Features" description="Features of the app"/>
               {project.results.map((feature, index) => (
                 <div key={index} className="text-gray-300 flex gap-2 mx-3 -mt-3 mb-4 font-semibold">
@@ -148,14 +148,19 @@ const page = ({params}: {params: {id: string}}) => {
                 <CardHeader title="Tech Stack Used" description="Explore the technologies and tools I use to creft expectational digital experiences." className=""/>
                 <div className="flex  [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
                 <div className="flex flex-none py-0.5 gap-6 pr-6">
-                {
-                  project?.tech.map((tech,index)=> (
-                    <div key={index} className="inline-flex items-center gap-4 py-2 px-3 outline outlinde-2 outline-white/20 rounded-lg ">  
-                      <span className="font-semibold">{tech.title}</span>
-                    </div>
-                  ))
-                }
-                
+                  {
+                    [...new Array(2).fill(0)].map((_,index)=>{
+                      return <Fragment key={index}>{
+                          project?.tech.map((tech,index)=> (
+                          <div key={index} className="inline-flex items-center py-2 px-3 pr-3 outline outlinde-2 outline-white/20 rounded-lg  animate-move-right [animation-duration:15s]">  
+                            <span className="font-semibold">{tech.title}</span>
+                          </div>
+                        ))
+                      }
+                      </Fragment>
+                    })
+                  }
+
                 </div>
                 </div>
             </Card>
