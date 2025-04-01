@@ -1,4 +1,3 @@
-import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
 import kasinaLandingage from '@/assets/images/project/kasina/Kasina_home.png'
 import kasinaSearch from '@/assets/images/project/Kasina/Searching.png';
 import kasinaChat from '@/assets/images/project/Kasina/chat.png';
