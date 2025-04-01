@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import grainImage from '@/assets/images/grain.jpg'
+import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 
 export const ContactSection = () => {
@@ -13,23 +14,32 @@ export const ContactSection = () => {
   const [message, setMessage] = useState(""); 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const {toast} = useToast();
 
   const handleSubmit = async ()=>{
     if(!email || !name || !message) {
       return setError("All forms must be submited before sending");
     }
     setIsLoading(true);
-    const response = await axios.post("/api/sendMessage",{name, email, message});
-
+    const response = await axios.post("/api/message",{name, email, message});
+    console.log(response);
     if(response.status === 200){
       setIsLoading(false);
+      toast({
+        title: "Message sent",
+        description: "Thank You for Reaching out",
+      })
       setName("");
       setEmail("");
       setMessage("");
-      alert("Message sent successfully");
     }else{
       setIsLoading(false);
       setError("Failed to send message");
+      toast({
+        variant: "destructive",
+        title: "Message failed sent",
+        description: "Error",
+      })
     }
 
   }
@@ -56,7 +66,7 @@ export const ContactSection = () => {
               <Input value={email} onChange={(e)=> setEmail(e.target.value)} type="text" placeholder="Enter Your Email" className="p-2 rounded-md font-mono md:p-1 w-full" />
               <Textarea value={message} onChange={(e)=> setMessage(e.target.value)} placeholder="Enter Your Message" className="p-2 rounded-md w-full h-36 md:h-20 font-mono resize-none"/>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
-              <Button onClick={()=>handleSubmit()} className="px-6 py-2 md:py-1 text-xl rounded-lg text-white w-[200px] font-mono">{isLoading ?"Loading":`Send`}</Button>
+              <Button onClick={()=>handleSubmit()} className="px-6 py-2 md:py-1 text-xl rounded-lg text-white w-[200px] font-mono">{isLoading ?"Loading":`REACH OUT`}</Button>
             </div>
 
           </div>

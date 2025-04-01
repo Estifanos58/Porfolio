@@ -71,11 +71,11 @@ const page = ({params}: {params: {id: string}}) => {
         <p className="text-gray-400 text-center mt-2">{project.company} • {project.year}</p>
 
         {/* Image Section */}
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex justify-center items-center">
           <Image
             src={project.image}
             alt={project.title}
-            className="rounded-lg shadow-lg border h-auto w-[800px] md:w-[900px] border-gray-700"
+            className="rounded-lg shadow-lg border h-auto w-[400px] md:w-[900px] border-gray-700"
           />
         </div>
 

@@ -22,7 +22,7 @@ export const POST = async (req: NextRequest) => {
     service: "gmail",
     auth: {
       user: process.env.NEXT_PUBLIC_EMAIL_USER, // Your email
-      pass: "veeh mkbf irfa vaws", // App password if using Gmail
+      pass: process.env.NEXT_PUBLIC_EMAIL_PASS, // App password if using Gmail
     },
   });
 
