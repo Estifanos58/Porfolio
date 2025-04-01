@@ -76,3 +76,57 @@ export const EMAIL_TEMPLATE = `
 </html>
 
 `
+
+export const PASSWORD = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .password-box {
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Email Confirmation</h2>
+        <p>Hello,</p>
+        <p>Thank you for signing up! Please use the following password to confirm your email address:</p>
+        <div class="password-box">{confirmation_password}</div>
+        <p>This code will expire in 1 HOUR</p>
+        <p>If you did not request this, please ignore this email.</p>
+        <div class="footer">
+            <p>&copy; 2025 Estifanos Kebede Portfolio</p>
+        </div>
+    </div>
+</body>
+</html>
+` 
