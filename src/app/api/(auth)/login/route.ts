@@ -2,6 +2,7 @@ import User from "@/lib/model/user";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { connect } from "@/lib/db";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -14,6 +15,7 @@ export const POST = async (req: NextRequest) => {
             );
         }
         
+        await connect();
         const user = await User.findOne({
             email: email,
             expiresAt: { $gt: new Date() }
@@ -88,6 +90,8 @@ export const GET = async (req: NextRequest) => {
                 { status: 401 }
             );
         }
+
+        await connect();
         const user = await User.findById(id);
 
         if(!user) return NextResponse.json({message: "No user found"}, {status: 404})

@@ -1,8 +1,8 @@
 import User from "@/lib/model/user";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { send } from "process";
 import { sendEmail } from "@/lib/sendMessage";
+import { connect } from "@/lib/db";
 
 export const POST = async (req: NextRequest) => {
     try {
@@ -12,7 +12,9 @@ export const POST = async (req: NextRequest) => {
 
         if(!email || !password) return NextResponse.json({message: "Please fill all the fields"}, {status: 400})
 
-            
+        console.log("create: ",create )
+        
+        await connect();
         if(create){
             const newUser = new User({
                 email: email,

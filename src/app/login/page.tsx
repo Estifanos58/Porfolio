@@ -12,12 +12,14 @@ function page() {
                 alert("Please fill all the fields")
                 return;
             }
-            const response = await axios.post("http://localhost:3000/api/auth/login", {email, password},{withCredentials: true});
-            if(response.status === 200){
-                alert("Login Successful")
-            }
-        } catch (error) {
+            // const response = await axios.post("http://localhost:3000/api/auth/login", {email, password},{withCredentials: true});
+            // if(response.status === 200){
+            //     alert("Login Successful")
+            // }
+
             
+        } catch (error) {
+            alert("error happened")
         }
     }   
   return (
