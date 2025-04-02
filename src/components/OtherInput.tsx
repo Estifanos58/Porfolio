@@ -20,7 +20,7 @@ const OtherInput = ({
           {title}
         </h2>
         <div>
-          {selectedArray.map((item, index) => (
+          {selectedArray?.map((item, index) => (
             <div
               key={index}
               className="flex bg-slate-300 mb-2 text-black p-3 rounded-md gap-2 justify-between items-center"

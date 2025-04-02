@@ -4,10 +4,13 @@ import React, { useState } from 'react'
 import { Input } from '@/components/ui/input';
 import { InputField } from '@/components/InputField';
 import OtherInput from '@/components/OtherInput';
+import { Textarea } from '@/components/ui/textarea';
 
 function page() {
   const [mainfeatures, setMainfeatures] = useState<string[]>([]);
   const [stacks, setStacks] = useState<string[]>([]);
+  const [otherfeatures, setOtherfeatures] = useState<string[]>([]);
+  const [otherfeature, setOtherfeature] = useState("");
   const [stack, setStack] = useState("");
   const [main, setMain] = useState("");
     
@@ -29,12 +32,23 @@ function page() {
               <OtherInput title={"Enter The Stacks Used in the  Project"} selectedArray={stacks} setSelectedArray={setStacks} selectedItem={stack} setSelectedItem={setStack}/>
             </div>
 
-            <div className='flex gap-2 justify-between'>
-
-              <InputField name={"URL-Link"} placeholder={"Enter the URL link of the Project"}/>
-              <InputField name={"Github-Link"} placeholder={"Enter the Github link of the Project"}/>
-              <InputField name={"Backend-Link"} placeholder={"Enter the Backend link of the Project"}/>
+            <div className='flex gap-3 justify-between'>
+              <div>
+                <OtherInput title={"Enter Other Features about the Project"} selectedArray={otherfeatures} setSelectedArray={setOtherfeatures} selectedItem={otherfeature} setSelectedItem={setOtherfeature}/>
+              </div>
+              <div className='border-2 border-black rounded-lg mt-5 p-4 w-[500px] flex flex-col gap-2'>
+                <InputField name={"URL-Link"} placeholder={"Enter the URL link of the Project"}/>
+                <InputField name={"Github-Link"} placeholder={"Enter the Github link of the Project"}/>
+                <InputField name={"Backend-Link"} placeholder={"Enter the Backend link of the Project"}/>
+              </div>
             </div>
+
+            <div>
+              <h2>Project Description</h2>
+              <Textarea className='w-full h-[300px] resize-none' placeholder='Enter a description about the project'/>
+            </div>
+
+            
         </div>
     </div>
   )
