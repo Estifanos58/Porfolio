@@ -5,11 +5,14 @@ import { Input } from '@/components/ui/input';
 import { InputField } from '@/components/InputField';
 import OtherInput from '@/components/OtherInput';
 import { Textarea } from '@/components/ui/textarea';
+import ImageUploader from '@/components/ImageUploader';
 
 function page() {
   const [mainfeatures, setMainfeatures] = useState<string[]>([]);
   const [stacks, setStacks] = useState<string[]>([]);
   const [otherfeatures, setOtherfeatures] = useState<string[]>([]);
+  const [images, setImages] = useState<{ id: number; url: string | ArrayBuffer | null; file: File }[]>([]);
+  const [image, setImage] = useState({});
   const [otherfeature, setOtherfeature] = useState("");
   const [stack, setStack] = useState("");
   const [main, setMain] = useState("");
@@ -43,12 +46,17 @@ function page() {
               </div>
             </div>
 
-            <div>
-              <h2>Project Description</h2>
-              <Textarea className='w-full h-[300px] resize-none' placeholder='Enter a description about the project'/>
+            <div className="flex gap-3">
+              <div className="border-2 border-black rounded-lg mt-5 p-4 w-[500px] flex flex-col gap-2">
+                <h2 className="text-center text-xl font-serif">Project Description</h2>
+                <Textarea className='w-full h-[300px] resize-none' placeholder='Enter a description about the project'/>
+              </div>
+              <div className="border-2 border-black rounded-lg mt-5 p-4 w-[500px] flex flex-col gap-2">
+                <h3 className="text-center text-xl font-serif">Picture</h3>
+                <ImageUploader images={images} setImages={setImages}/>
+              </div>
             </div>
-
-            
+           
         </div>
     </div>
   )
