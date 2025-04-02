@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-export default function ImageUploader({images, setImages}:{images: {id: number; url: string | ArrayBuffer | null; file: File }[], setImages: React.Dispatch<React.SetStateAction<{id: number; url: string | ArrayBuffer | null; file: File }[]>>}) {
+export default function ImageUploader({images, setImages, cover, setCover}:{images: {id: number; url: string | ArrayBuffer | null; file: File }[],cover: any,setCover:any,  setImages: React.Dispatch<React.SetStateAction<{id: number; url: string | ArrayBuffer | null; file: File }[]>>}) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +37,14 @@ export default function ImageUploader({images, setImages}:{images: {id: number; 
       fileInputRef.current.click();
     }
   };
-
+  const handleCoverChange = (image:any)=> {
+        if(cover.id === image.id) {
+          setCover({id: 0, url: "", file: null});
+        }
+        else {
+          setCover(image);
+        }
+  }
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-xl text-center font-serif font-bold mb-4">Image Uploader</h1>
@@ -62,7 +69,13 @@ export default function ImageUploader({images, setImages}:{images: {id: number; 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image) => (
           <div key={image.id} className="relative border rounded p-2">
+            {cover.id === image.id && (
+                <div className="absolute top-0 left-0 bg-green-500 text-white p-1 rounded">
+                    Cover Image
+                </div>
+            )}
             <img 
+              onClick={()=>handleCoverChange(image)}  
               src={image.url} 
               alt="Preview" 
               className="w-full h-32 object-cover"

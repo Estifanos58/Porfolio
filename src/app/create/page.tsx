@@ -12,7 +12,7 @@ function page() {
   const [stacks, setStacks] = useState<string[]>([]);
   const [otherfeatures, setOtherfeatures] = useState<string[]>([]);
   const [images, setImages] = useState<{ id: number; url: string | ArrayBuffer | null; file: File }[]>([]);
-  const [image, setImage] = useState({});
+  const [coverimage, setCoverimage] = useState({});
   const [otherfeature, setOtherfeature] = useState("");
   const [stack, setStack] = useState("");
   const [main, setMain] = useState("");
@@ -53,7 +53,7 @@ function page() {
               </div>
               <div className="border-2 border-black rounded-lg mt-5 p-4 w-[500px] flex flex-col gap-2">
                 <h3 className="text-center text-xl font-serif">Picture</h3>
-                <ImageUploader images={images} setImages={setImages}/>
+                <ImageUploader images={images} cover={coverimage} setCover={setCoverimage} setImages={setImages}/>
               </div>
             </div>
            
