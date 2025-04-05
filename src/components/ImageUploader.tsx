@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-export default function ImageUploader({images, setImages, cover, setCover}:{images: {id: number; url: string | ArrayBuffer | null; file: File }[],cover: any,setCover:any,  setImages: React.Dispatch<React.SetStateAction<{id: number; url: string | ArrayBuffer | null; file: File }[]>>}) {
+export default function ImageUploader({images, setImages, cover, setCover, videos, setVideos}:{images: {id: number; url: string | ArrayBuffer | null; file: File }[],videos: {id: number; url: string | ArrayBuffer | null; file: File }[], setVideos: React.Dispatch<React.SetStateAction<{id: number; url: string | ArrayBuffer | null; file: File }[]>>,cover: any,setCover:any,  setImages: React.Dispatch<React.SetStateAction<{id: number; url: string | ArrayBuffer | null; file: File }[]>>}) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,18 +10,28 @@ export default function ImageUploader({images, setImages, cover, setCover}:{imag
     const files = Array.from(e.target.files);
     
     files.forEach((file) => {
-      if (!file.type.match('image.*')) {
+      if (!file.type.match('image.*') || !file.type.match('video.*')) {
+        alert('Please upload only images or videos.');
         return;
       }
 
       const reader = new FileReader();
       
       reader.onload = () => {
+        if(file.type.match('video.*')) {
+          setVideos(prevVideos => [...prevVideos, {
+            id: Date.now(), // simple unique id
+            url: reader.result || null,
+            file: file
+          }]);
+        }
+        else if(file.type.match('image.*')) {
         setImages(prevImages => [...prevImages, {
           id: Date.now(), // simple unique id
           url: reader.result || null,
           file: file
         }]);
+      }
       };
       
       reader.readAsDataURL(file);
@@ -53,10 +63,10 @@ export default function ImageUploader({images, setImages, cover, setCover}:{imag
         type="file"
         ref={fileInputRef}
         onChange={handleImageChange}
-        accept="image/*"
+        accept="image/*, video/*"
         multiple
         className="hidden"
-        title="Upload images"
+        title="Upload images, Upload vidoes"
       />
       
       <button
@@ -67,6 +77,10 @@ export default function ImageUploader({images, setImages, cover, setCover}:{imag
       </button>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {images.length === 0 && videos.length === 0 && 
+        (<div className="col-span-3 text-center text-gray-500">No images or videos uploaded yet.</div>)}
+        {images.length !== 0 && 
+        (<h2 className='text-center text-gray-500 text-2xl'>Selected Images</h2>)}
         {images.map((image) => (
           <div key={image.id} className="relative border rounded p-2">
             {cover.id === image.id && (
@@ -88,6 +102,21 @@ export default function ImageUploader({images, setImages, cover, setCover}:{imag
             </button>
           </div>
         ))}
+        {videos.length !== 0 && 
+        (<h2 className='text-center text-gray-500 text-2xl'>Selected Videos</h2>)}
+        {videos.map((video)=> (
+              <div key={video.id} className="border rounded p-3 flex flex-col sm:flex-row gap-4">
+                <div className="flex-1">
+                   (
+                    <video 
+                      src={video.url} 
+                      controls
+                      className="w-full h-auto max-h-48 rounded"
+                    />
+                  )
+                  </div>
+                  </div>
+          ))}
       </div>
     </div>
   );
